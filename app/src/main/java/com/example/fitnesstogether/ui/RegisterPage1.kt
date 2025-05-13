@@ -21,11 +21,11 @@ class RegisterPage1: Fragment() {
         val view = inflater.inflate(R.layout.register_screen_1, container, false)
 
         view.findViewById<Button>(R.id.Next).setOnClickListener {
-            Toast.makeText(context, "Click!", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(view).navigate(R.id.action_registerPage1_to_registerPage2)
         }
 
         view.findViewById<TextView>(R.id.login).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_registerPage1_to_registerPage2)
+            Navigation.findNavController(view).navigate(R.id.action_registerPage1_to_loginPage)
         }
 
         return view
