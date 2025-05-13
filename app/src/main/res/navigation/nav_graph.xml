@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registerPage1">
+
+    <fragment
+        android:id="@+id/registerPage1"
+        android:name="com.example.fitnesstogether.ui.RegisterPage1"
+        android:label="RegisterPage1" >
+        <action
+            android:id="@+id/action_registerPage1_to_registerPage2"
+            app:destination="@id/registerPage2" />
+        <action
+            android:id="@+id/action_registerPage1_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerPage2"
+        android:name="com.example.fitnesstogether.ui.RegisterPage2"
+        android:label="RegisterPage2" >
+        <action
+            android:id="@+id/action_registerPage2_to_registerPage3"
+            app:destination="@id/registerPage3" />
+        <action
+            android:id="@+id/action_registerPage2_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerPage3"
+        android:name="com.example.fitnesstogether.ui.RegisterPage3"
+        android:label="RegisterPage3" >
+        <action
+            android:id="@+id/action_registerPage3_to_registerPage4"
+            app:destination="@id/registerPage4" />
+        <action
+            android:id="@+id/action_registerPage3_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerPage4"
+        android:name="com.example.fitnesstogether.ui.RegisterPage4"
+        android:label="RegisterPage4" >
+        <action
+            android:id="@+id/action_registerPage4_to_loginPage"
+            app:destination="@id/loginPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPage"
+        android:name="com.example.fitnesstogether.ui.LoginPage"
+        android:label="LoginPage" />
+</navigation>

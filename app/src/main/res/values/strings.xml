@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Fitness Together!</string>
+    <string name="fitness_together">Fitness Together</string>
+    <string name="Register">Регистрация</string>
+    <string name="name">Имя</string>
+    <string name="Surname">Фамилия</string>
+    <string name="dateOfBirth">Дата рождения</string>
+    <string name="next">Продолжить</string>
+    <string name="signIn">Войти</string>
+    <string name="haveAnAccount">Уже есть аккаунт?</string>
+    <string name="confidenctialAgreement">Регистрируясь, вы соглашаетесь с условиями использования приложения и политикой конфиденциальности</string>
+    <string name="repeatPassword">Повторите пароль</string>
+    <string name="password">Пароль</string>
+    <string name="customer">Ученик</string>
+    <string name="coach">Тренер</string>
+    <string name="organisation">Организация</string>
+    <string name="experience">Опыт работы</string>
+    <string name="login">Логин</string>
+    <string name="passwordSign">Пароль</string>
+    <string name="enter">Войти</string>
+</resources>
