@@ -7,7 +7,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.example.fitnesstogether.ui.RegisterPage4"
+        android:name="com.example.fitnesstogether.ui.LoginPage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"

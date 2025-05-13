@@ -72,5 +72,19 @@
             android:text="@string/enter"
             android:textSize="20dp" />
 
+        <TextView
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center_horizontal"
+            android:paddingLeft="10dp"
+            android:text="Регистрация"
+            android:textColor="#FF8C00"
+            android:textSize="20sp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

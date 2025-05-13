@@ -50,5 +50,9 @@
     <fragment
         android:id="@+id/loginPage"
         android:name="com.example.fitnesstogether.ui.LoginPage"
-        android:label="LoginPage" />
+        android:label="LoginPage" >
+        <action
+            android:id="@+id/action_loginPage_to_registerPage1"
+            app:destination="@id/registerPage1" />
+    </fragment>
 </navigation>
