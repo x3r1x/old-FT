@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_loginPage_to_registerPage1"
             app:destination="@id/registerPage1" />
+        <action
+            android:id="@+id/action_loginPage_to_mainMenu"
+            app:destination="@id/mainMenu" />
     </fragment>
     <fragment
         android:id="@+id/registerPage1"
@@ -53,4 +56,8 @@
             android:id="@+id/action_registerPage4_to_loginPage"
             app:destination="@id/loginPage" />
     </fragment>
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.example.fitnesstogether.ui.MainMenu"
+        android:label="MainMenu" />
 </navigation>

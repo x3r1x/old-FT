@@ -39,7 +39,8 @@ class LoginPage : Fragment() {
         loginButton = view.findViewById(R.id.Next) // Использование ID из вашего XML
 
         loginButton.setOnClickListener {
-            performLogin()
+            Navigation.findNavController(view).navigate(R.id.action_loginPage_to_mainMenu)
+            //performLogin()
         }
 
         view.findViewById<TextView>(R.id.registerButton).setOnClickListener {

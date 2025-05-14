@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_trainees"
+            android:title="@string/trainees"
+            android:icon="@drawable/trainee_icon"
+            />
+
+        <item android:id="@+id/nav_account"
+            android:title="@string/account"
+            android:icon="@drawable/account_icon"
+            />
+    </group>
+
+</menu>

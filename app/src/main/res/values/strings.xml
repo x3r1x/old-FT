@@ -18,4 +18,10 @@
     <string name="login">Логин</string>
     <string name="passwordSign">Пароль</string>
     <string name="enter">Войти</string>
+    <string name="navigation_logo">navigation_logo</string>
+    <string name="fitness_together_with_mark">Fitness Together!</string>
+    <string name="trainees">Тренировки</string>
+    <string name="nav_drawer_open">Открыть меню навигации</string>
+    <string name="nav_drawer_close">Закрыть меню навигации</string>
+    <string name="account">Аккаунт</string>
 </resources>
