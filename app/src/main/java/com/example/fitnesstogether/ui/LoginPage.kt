@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.fitnesstogether.R
 
-import com.example.fitnesstogether.data.LoginRequest
-import com.example.fitnesstogether.data.LoginResponse
-import com.example.fitnesstogether.network.RetrofitClient
+import com.example.fitnesstogether.domain.LoginRequest
+import com.example.fitnesstogether.domain.LoginResponse
+import com.example.fitnesstogether.domain.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,5 +1,4 @@
-// src/main/java/com/example/fitnesstogether/data/LoginResponse.kt
-package com.example.fitnesstogether.data
+package com.example.fitnesstogether.domain
 
 import com.google.gson.annotations.SerializedName
 

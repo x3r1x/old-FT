@@ -1,4 +1,4 @@
-package com.example.fitnesstogether.network
+package com.example.fitnesstogether.domain
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
