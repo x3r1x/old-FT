@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:paddingEnd="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,25 +46,29 @@
             android:textColor="#000000"
             android:textSize="32sp" />
 
-        <Button
-            android:id="@+id/Coach"
+        <TextView
+            android:id="@+id/coachButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_background"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
             android:fontFamily="@font/roboto_medium"
+            android:gravity="center_horizontal"
             android:text="@string/coach"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/customer"
+        <TextView
+            android:id="@+id/customerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_background"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
             android:fontFamily="@font/roboto_medium"
+            android:gravity="center_horizontal"
             android:text="@string/customer"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/Next"
