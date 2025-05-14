@@ -46,4 +46,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Retrofit - основной клиент
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+
+    // Конвертер для JSON (используем Gson)
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Если вы используете Kotlin Coroutines, добавьте это
+    // implementation("com.squareup.retrofit2:converter-scalars:2.9.0") // Опционально, для строк/примитивов
+    // implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1") // Пример версии
+    // implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2") // Для Call.await()
+
 }

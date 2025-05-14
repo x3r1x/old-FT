@@ -56,7 +56,7 @@
             android:background="@drawable/registration_output"
             android:fontFamily="@font/roboto_light"
             android:hint="@string/passwordSign"
-            android:inputType="datetime|date"
+            android:inputType="text"
             android:paddingStart="20sp"
             android:textAlignment="viewStart"
             android:textColor="#848282"
