@@ -25,13 +25,14 @@ class LoginPage : Fragment() {
     private lateinit var userNameField: TextInputEditText
     private lateinit var passwordField: TextInputEditText
     private lateinit var loginButton: Button
+    private lateinit var view: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.login_screen, container, false)
+        view = inflater.inflate(R.layout.login_screen, container, false)
 
         userNameField = view.findViewById(R.id.LoginInput) // Использование ID из вашего XML
         passwordField = view.findViewById(R.id.PasswordField) // Использование ID из вашего XML
@@ -39,8 +40,7 @@ class LoginPage : Fragment() {
         loginButton = view.findViewById(R.id.Next) // Использование ID из вашего XML
 
         loginButton.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_loginPage_to_mainMenu)
-            //performLogin()
+            performLogin()
         }
 
         view.findViewById<TextView>(R.id.registerButton).setOnClickListener {
@@ -69,7 +69,7 @@ class LoginPage : Fragment() {
                     if (loginResponse != null && loginResponse.accessToken != null) {
                         Toast.makeText(context, "Вход успешен!", Toast.LENGTH_LONG).show()
                         // TODO: Сохраните loginResponse.token (например, в SharedPreferences)
-                        // TODO: Перейдите на следующий экран
+                        Navigation.findNavController(view).navigate(R.id.action_loginPage_to_mainMenu)
                     } else {
                         Toast.makeText(context, "Ошибка входа! Укажите верные UserName и Password", Toast.LENGTH_SHORT).show()
                     }
