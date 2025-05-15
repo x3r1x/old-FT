@@ -49,6 +49,8 @@ dependencies {
     // Retrofit - основной клиент
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
 
+
+
     // Конвертер для JSON (используем Gson)
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 

@@ -24,4 +24,7 @@
     <string name="nav_drawer_open">Открыть меню навигации</string>
     <string name="nav_drawer_close">Закрыть меню навигации</string>
     <string name="account">Аккаунт</string>
+    <string name="addPhoto">Добавь фото</string>
+    <string name="description">Описание</string>
+    <string name="customers">Ученики</string>
 </resources>

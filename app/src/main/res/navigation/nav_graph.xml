@@ -59,5 +59,20 @@
     <fragment
         android:id="@+id/mainMenu"
         android:name="com.example.fitnesstogether.ui.MainMenu"
-        android:label="MainMenu" />
+        android:label="MainMenu" >
+        <action
+            android:id="@+id/action_mainMenu_to_profilePage"
+            app:destination="@id/profilePage" />
+        <action
+            android:id="@+id/action_mainMenu_to_workoutPage"
+            app:destination="@id/workoutPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.fitnesstogether.ui.ProfilePage"
+        android:label="ProfilePage" />
+    <fragment
+        android:id="@+id/workoutPage"
+        android:name="com.example.fitnesstogether.ui.WorkoutPage"
+        android:label="WorkoutPage" />
 </navigation>
