@@ -1,19 +1,35 @@
-package com.example.fitnesstogether.domain
-
+import android.content.Context
+import com.example.fitnesstogether.domain.ApiService
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "http://10.0.2.2:5000"
+    private const val BASE_URL = "http://147.45.156.158:5000"
 
-    private val retrofit: Retrofit by lazy {
-        Retrofit.Builder()
+    fun create(context: Context): ApiService {
+        // сначала Build настройки Retrofit без Authenticator
+        val retrofitBase = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-    }
 
-    val apiService: ApiService by lazy {
-        retrofit.create(ApiService::class.java)
+        // собственно AuthInterceptor
+        val authInterceptor = AuthInterceptor(context)
+
+        // и Authenticator, если нужен автоматический рефреш
+        val authenticator = TokenAuthenticator(context, retrofitBase)
+
+        val client = OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .authenticator(authenticator) // опционально
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ApiService::class.java)
     }
 }

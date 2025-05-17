@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.example.fitnesstogether.R
 
 class RegisterPage4 : Fragment() {
+    private val vm: RegistrationViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

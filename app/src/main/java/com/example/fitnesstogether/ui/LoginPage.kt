@@ -9,11 +9,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.example.fitnesstogether.FTApplication
 import com.example.fitnesstogether.R
 
 import com.example.fitnesstogether.domain.LoginRequest
 import com.example.fitnesstogether.domain.LoginResponse
-import com.example.fitnesstogether.domain.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,10 +34,10 @@ class LoginPage : Fragment() {
     ): View? {
         view = inflater.inflate(R.layout.login_screen, container, false)
 
-        userNameField = view.findViewById(R.id.LoginInput) // Использование ID из вашего XML
-        passwordField = view.findViewById(R.id.PasswordField) // Использование ID из вашего XML
+        userNameField = view.findViewById(R.id.LoginInput)
+        passwordField = view.findViewById(R.id.PasswordField)
 
-        loginButton = view.findViewById(R.id.Next) // Использование ID из вашего XML
+        loginButton = view.findViewById(R.id.Next)
 
         loginButton.setOnClickListener {
             performLogin()
@@ -53,6 +53,7 @@ class LoginPage : Fragment() {
     private fun performLogin() {
         val userName = userNameField.text.toString().trim()
         val password = passwordField.text.toString().trim()
+        val context = requireContext()
 
         if (userName.isEmpty() || password.isEmpty()) {
             Toast.makeText(context, "Пожалуйста, введите UserName и Password", Toast.LENGTH_SHORT).show()
@@ -61,33 +62,31 @@ class LoginPage : Fragment() {
 
         val loginRequest = LoginRequest(userName, password = password)
 
-        RetrofitClient.apiService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-
-                if (response.isSuccessful) {
-                    val loginResponse = response.body()
-                    if (loginResponse != null && loginResponse.accessToken != null) {
-                        Toast.makeText(context, "Вход успешен!", Toast.LENGTH_LONG).show()
-                        // TODO: Сохраните loginResponse.token (например, в SharedPreferences)
-                        Navigation.findNavController(view).navigate(R.id.action_loginPage_to_mainMenu)
+        FTApplication.apiService.login(loginRequest)
+            .enqueue(object : Callback<LoginResponse> {
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let { tokens ->
+                            // сохраняем токены
+                            TokenStorage.saveTokens(context, tokens.accessToken, tokens.refreshToken)
+                            // навигация
+                            Navigation.findNavController(view)
+                                .navigate(R.id.action_loginPage_to_mainMenu)
+                        }
                     } else {
-                        Toast.makeText(context, "Ошибка входа! Укажите верные UserName и Password", Toast.LENGTH_SHORT).show()
+                        val errorBody = response.errorBody()?.string()
+                        val message = "Ошибка ${response.code()}: ${errorBody ?: response.message()}"
+                        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
                     }
-                } else {
-                    val errorBody = response.errorBody()?.string()
-                    val errorMessage = try {
-                        "Ошибка HTTP ${response.code()}: ${errorBody ?: response.message()}"
-                    } catch (e: Exception) {
-                        "Ошибка HTTP ${response.code()}: ${response.message()}"
-                    }
-                    Toast.makeText(context, "Ошибка сервера: $errorMessage", Toast.LENGTH_SHORT).show()
                 }
-            }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Toast.makeText(context, "Ошибка сети: ${t.message}", Toast.LENGTH_SHORT).show()
-                t.printStackTrace()
-            }
-        })
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Toast.makeText(context, "Ошибка сети: ${t.message}", Toast.LENGTH_SHORT).show()
+                    t.printStackTrace()
+                }
+            })
     }
 }
