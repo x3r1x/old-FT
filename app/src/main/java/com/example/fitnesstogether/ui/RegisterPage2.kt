@@ -26,27 +26,25 @@ class RegisterPage2 : Fragment() {
         val userPassword = view.findViewById<TextInputEditText>(R.id.Password);
         val userPasswordConfirm = view.findViewById<TextInputEditText>(R.id.PasswordField);
 
+        var login = ""
+        var password = ""
+        var password2 = ""
+
         view.findViewById<Button>(R.id.Next).setOnClickListener {
-            val login = userLogin.text.toString().trim()
-            val password = userPassword.text.toString().trim()
-            val password2 = userPasswordConfirm.text.toString().trim()
-            if (login.isEmpty() || password.isEmpty() || password2.isEmpty() || password  != password2) {
-                Toast.makeText(requireContext(), "Введите логин и пароль!", Toast.LENGTH_SHORT).show()
-                if (password  != password2){
-                    Toast.makeText(requireContext(), "Пароли должны совпадать!", Toast.LENGTH_SHORT).show()
-                }
-                return@setOnClickListener
-            }
+            login = userLogin.text.toString().trim()
+            password = userPassword.text.toString().trim()
+            password2 = userPasswordConfirm.text.toString().trim()
             vm.userName.value = login
             vm.password.value = password
             println(vm.userName)
-            Navigation.findNavController(view)
-                .navigate(R.id.action_registerPage1_to_registerPage2)
-        }
 
-
-        view.findViewById<Button>(R.id.Next).setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_registerPage2_to_registerPage3)
+            if (login.isEmpty() || password.isEmpty() || password2.isEmpty()) {
+                Toast.makeText(requireContext(), "Введите логин и пароль!", Toast.LENGTH_SHORT).show()
+            } else if (password  != password2){
+                Toast.makeText(requireContext(), "Пароли должны совпадать!", Toast.LENGTH_SHORT).show()
+            } else {
+                Navigation.findNavController(view).navigate(R.id.action_registerPage2_to_registerPage3)
+            }
         }
 
         view.findViewById<TextView>(R.id.login).setOnClickListener {
