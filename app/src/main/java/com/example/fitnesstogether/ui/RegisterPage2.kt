@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 class RegisterPage2 : Fragment() {
     private val vm: RegistrationViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,7 +43,7 @@ class RegisterPage2 : Fragment() {
                 Toast.makeText(requireContext(), "Введите логин и пароль!", Toast.LENGTH_SHORT).show()
             } else if (password  != password2){
                 Toast.makeText(requireContext(), "Пароли должны совпадать!", Toast.LENGTH_SHORT).show()
-            } else {
+            } else if (validatePassword(password)) {
                 Navigation.findNavController(view).navigate(R.id.action_registerPage2_to_registerPage3)
             }
         }
@@ -52,5 +53,22 @@ class RegisterPage2 : Fragment() {
         }
 
         return view
+    }
+
+    private fun validatePassword(password: String): Boolean {
+        if (!password.contains("[1-9]".toRegex())) {
+            Toast.makeText(requireContext(), "Пароль должен содержать цифры!", Toast.LENGTH_SHORT).show()
+            return false
+        } else if (!password.contains("[A-Z]".toRegex())) {
+            Toast.makeText(requireContext(), "Пароль должен содержать заглавную букву!", Toast.LENGTH_SHORT).show()
+            return false
+        } else if (!password.contains("[a-z]".toRegex())) {
+            Toast.makeText(requireContext(), "Пароль должен содержать строчную букву!", Toast.LENGTH_SHORT).show()
+            return false
+        } else if (!password.contains("[!\\\"#\$%&'()*+,-./:;\\\\\\\\<=>?@\\\\[\\\\]^_`{|}~]".toRegex())) {
+            Toast.makeText(requireContext(), "Пароль должен содержать спец.символ!", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        return true
     }
 }
